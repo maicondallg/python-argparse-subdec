@@ -3,21 +3,20 @@ import pathlib
 import setuptools
 
 extra_dependencies = {
-    'pytest~=6.2': ['dev', 'tests'],
-    'coverage~=5.5': ['dev', 'tests'],
-    'mypy>=0.910<1': ['dev'],
+    'pytest>=6.2,<7': ['dev', 'tests'],
+    'coverage>=5.5,<6': ['dev', 'tests'],
+    'mypy>=0.910,<1': ['dev'],
 }
 extras_require = {'all': []}
 for dep, topics in extra_dependencies.items():
     extras_require['all'].append(dep)
     for topic in topics:
-        extras_require.setdefault(topic, [])
-        extras_require[topic].append(dep)
+        extras_require.setdefault(topic, []).append(dep)
 
 
 setuptools.setup(
     name='argparse-subdec',
-    version='0.2.1',
+    version='0.2.2',
     long_description=(pathlib.Path(__file__).parent / 'README.rst').read_text(),
     long_description_content_type='text/x-rst',
     url='https://github.com/guludo/python-argparse-subdec',
